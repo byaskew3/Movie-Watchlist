@@ -1,17 +1,18 @@
 const searchBtn = document.querySelector('.btn-search')
-const watchListBtn = document.querySelector('.btn-watchlist')
 const inputEl = document.querySelector('input')
 const mainContainerEl = document.querySelector('.main-container')
 const filmContainerEl = document.querySelector('.film-container')
+const watchListContainerEl = document.querySelector('.watchlist-container')
+
 let addedToWatchlist = false;
 
 const addToWatchlist = () => {
-    if (clickHandler) {
+    if (addedToWatchlist) {
 
     }
 }
 
-const clickHandler = () => addedToWatchlist = true;
+const clickHandler = () => console.log('clickkkkkk');
 
 searchBtn.addEventListener('click', () => {
     mainContainerEl.innerHTML = ''
@@ -41,12 +42,9 @@ searchBtn.addEventListener('click', () => {
                             </div>
                         </div>
                         `
-                        // console.log(results)
-                        // watchListBtn.addEventListener('click', () => {
-                        //     if 
-                        // })
+                        console.log(results)
                     })
-            }
+                }
             } else {
                 filmContainerEl.innerHTML = `
                 <p class="no-data-text">Unable to find what you're looking for. Please try another search.</p>
@@ -55,3 +53,6 @@ searchBtn.addEventListener('click', () => {
             }
         })
 })
+
+
+
