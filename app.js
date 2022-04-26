@@ -4,12 +4,9 @@ const mainContainerEl = document.querySelector('.main-container')
 const filmContainerEl = document.querySelector('.film-container')
 const watchListContainerEl = document.querySelector('.watchlist-container')
 
-let addedToWatchlist = false;
 
 const addToWatchlist = () => {
-    if (addedToWatchlist) {
-
-    }
+    console.log('movie added to watch list')
 }
 
 const clickHandler = () => console.log('clickkkkkk');
@@ -19,30 +16,31 @@ searchBtn.addEventListener('click', () => {
     fetch(`http://www.omdbapi.com/?s=${inputEl.value}&apikey=855731ad`)
         .then(res => res.json())
         .then(data => {
-            let results = []
             inputEl.value = ''
-            console.log(data.Response)
             if (data.Response === 'True') {
                 filmContainerEl.style.display = 'none'
                 for (let movie of data.Search) {
+                    let movieList = []
                     fetch(`http://www.omdbapi.com/?t=${movie.Title}&apikey=855731ad`)
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
-                        results.push(data)
+                        const {Poster, Title, Runtime, Genre, Plot, imdbRating} = data
                         mainContainerEl.innerHTML += `
                         <div class="movie">
-                            <img src="${data.Poster}" alt="">
+                            <img src="${Poster}" alt="">
                             <div class="movie-text">
-                                <h4>${data.Title} <span class="star-text"><i class="fa-solid fa-star star"></i> ${data.imdbRating}</span></h4>
-                                <p>${data.Runtime} <span class="movie-types">${data.Genre}</span>
+                                <h4>${Title} <span class="star-text"><i class="fa-solid fa-star star"></i> ${imdbRating}</span></h4>
+                                <p>${Runtime} <span class="movie-types">${Genre}</span>
                                 <span class="watchlist-text"><button class="btn-watchlist"><i class="fa-solid fa-circle-plus watchlist"></i>Watchlist</button></span>
                                 </p>
-                                <p class="movie-desc">${data.Plot}</p>
+                                <p class="movie-desc">${Plot}</p>
                             </div>
                         </div>
                         `
-                        console.log(results)
+                        const watchListBtns = document.querySelectorAll('.btn-watchlist')
+                        watchListBtns.forEach(btn => {
+                            btn.addEventListener('click', addToWatchlist)
+                        })
                     })
                 }
             } else {
