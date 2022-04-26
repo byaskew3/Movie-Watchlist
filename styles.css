@@ -11,7 +11,7 @@ body {
     color: white;
 }
 
-/* Typeography */
+/* Typography */
 
 h1 {
     font-size: 2.5rem;
@@ -44,6 +44,38 @@ h1 {
     margin: 0;
 }
 
+button {
+    cursor: pointer;
+    max-height: 100%;
+    background-color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    padding: 1em 3em;
+    border-left: 1px solid #7c7c7c;
+    transition: .3s;
+}
+
+button:hover, button:focus {
+    background-color: #585858;
+    color: white;
+}
+
+.container {
+    position: relative;
+}
+
+.search-bar {
+    background-color: white;
+    position: absolute;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    top: 85%;
+    left: 5%;
+}
+
 .movie {
     display: flex;
     margin: 3em;
@@ -55,11 +87,30 @@ h1 {
     margin-left: 1.5em;
 }
 
+.watchlist {
+    margin-right: .3em;
+}
+
 /* Colors */
 
 a {
     color: white;
     text-decoration: none;
+}
+
+input {
+    font-size: 1rem;
+    margin-left: 1em;
+    padding: 0;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.search-bar {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .movie {
@@ -68,6 +119,17 @@ a {
 
 .movie-desc {
     color: #585858;
+}
+
+.star {
+    color: gold;
+}
+
+.fa-magnifying-glass {
+    width: 100%;
+    color: #7c7c7c;
+    margin: auto 0;
+    padding: .5em 2em .5em 1em;
 }
 
 /* images */
