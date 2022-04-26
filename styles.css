@@ -44,7 +44,7 @@ h1 {
     margin: 0;
 }
 
-button {
+.btn-search {
     cursor: pointer;
     max-height: 100%;
     background-color: white;
@@ -55,7 +55,7 @@ button {
     transition: .3s;
 }
 
-button:hover, button:focus {
+.btn-search:hover, .btn-search:focus {
     background-color: #585858;
     color: white;
 }
@@ -98,6 +98,13 @@ button:hover, button:focus {
     font-size: 8rem;
 }
 
+.film-container .no-data-text {
+    color: #d5d5d5;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0 1em;
+}
+
 .watchlist-container {
     width: 100%;
     height: 80%;
@@ -137,6 +144,17 @@ button:hover, button:focus {
 
 .watchlist {
     margin-right: .3em;
+}
+
+.btn-watchlist {
+    cursor: pointer;
+    border: none;
+    background: white;
+    font-weight: 400;
+}
+
+.btn-watchlist:focus, .btn-watchlist:hover {
+    text-decoration: underline;
 }
 
 /* Colors */
@@ -261,6 +279,12 @@ img {
         font-size: .8rem;
     }
 
+}
+
+@media (max-width: 575px) {
+    .btn-watchlist {
+        padding: 0;
+    }
 }
 
 @media(max-width: 525px) {
