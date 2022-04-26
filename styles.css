@@ -124,10 +124,6 @@ button:hover, button:focus {
     margin-bottom: 10em;
 }
 
-.main-container {
-    display: none;
-}
-
 .movie {
     display: flex;
     margin: 3em;
