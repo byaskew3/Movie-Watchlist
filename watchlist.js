@@ -1,6 +1,7 @@
 if (localStorage.length > 0) {
     const watchlistContainerEl = document.querySelector('#watchlist-container')
     watchlistContainerEl.innerHTML = ''
+    watchlistContainerEl.style.display = 'block'
     for (let i = 0; i < localStorage.length; i++){
         const movieId = localStorage.getItem(localStorage.key(i));
         fetch(`http://www.omdbapi.com/?t=${movieId}&apikey=855731ad`)

@@ -49,7 +49,7 @@ searchBtn.addEventListener('click', () => {
                                             localStorage.setItem(`${imdbID}`, `${Title}`)
                                         })
                                 } else {
-                                    console.log('Movie is already added!')
+                                    alert("You've already added this movie to your watchlist!")
                                 }
                             })
                         })
