@@ -47,19 +47,6 @@ searchBtn.addEventListener('click', () => {
                                         .then(data => {
                                             const {Poster, Title, Runtime, Genre, Plot, imdbRating, imdbID} = data
                                             localStorage.setItem(`${imdbID}`, `${Title}`)
-                                            console.log(watchList)
-                                            const movieHtml = `
-                                            <div class="movie">
-                                                <img src="${Poster}" alt="">
-                                                <div class="movie-text">
-                                                    <h4>${Title} <span class="star-text"><i class="fa-solid fa-star star"></i> ${imdbRating}</span></h4>
-                                                    <p>${Runtime} <span class="movie-types">${Genre}</span>
-                                                    <span class="watchlist-text"><button class="btn-watchlist" value="${imdbID}"><i class="fa-solid fa-circle-plus watchlist"></i>Watchlist</button></span>
-                                                    </p>
-                                                    <p class="movie-desc">${Plot}</p>
-                                                </div>
-                                            </div>
-                                            `
                                         })
                                 } else {
                                     console.log('Movie is already added!')

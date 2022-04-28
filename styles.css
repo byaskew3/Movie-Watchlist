@@ -115,7 +115,7 @@ h1 {
     color: black;
 }
 
-#watchlist-container p {
+.empty-watchlist-text {
     font-size: 1.5rem;
     color: #d5d5d5;
 }
@@ -127,8 +127,10 @@ h1 {
     color: black;
 }
 
-#watchlist-container .watchlist {
-    margin-bottom: 10em;
+#watchlist-container .movie {
+    max-width: 1200px;
+    margin: 0;
+    margin: 1em 0;
 }
 
 .movie {
