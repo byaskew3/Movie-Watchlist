@@ -2,8 +2,8 @@ const searchBtn = document.querySelector('.btn-search')
 const inputEl = document.querySelector('input')
 const mainContainerEl = document.querySelector('.main-container')
 const filmContainerEl = document.querySelector('.film-container')
-const watchListContainerEl = document.querySelector('.watchlist-container')
-let movieList = []
+const watchListContainerEl = document.querySelector('#watchlist-container')
+
 let watchList = []
 
 searchBtn.addEventListener('click', () => {
@@ -19,7 +19,7 @@ searchBtn.addEventListener('click', () => {
                     .then(res => res.json())
                     .then(data => {
                         const {Poster, Title, Runtime, Genre, Plot, imdbRating, imdbID} = data
-                        movieList.push(imdbID)
+
                         const movieHtml = `
                         <div class="movie">
                             <img src="${Poster}" alt="">
@@ -39,8 +39,28 @@ searchBtn.addEventListener('click', () => {
                         watchListBtns.forEach(btn => {
                             btn.addEventListener('click', () => {
                                 if (!watchList.includes(btn.value)) {
+                                    localStorage.setItem('Movie-ID', btn.value)
                                     watchList.push(btn.value)
                                     console.log(`${btn.value} added to watchlist!`)
+                                    fetch(`http://www.omdbapi.com/?i=${btn.value}&apikey=855731ad`)
+                                        .then(res => res.json())
+                                        .then(data => console.log(data))
+                                        const {Poster, Title, Runtime, Genre, Plot, imdbRating, imdbID} = data
+
+                                        const movieHtml = `
+                                        <div class="movie">
+                                            <img src="${Poster}" alt="">
+                                            <div class="movie-text">
+                                                <h4>${Title} <span class="star-text"><i class="fa-solid fa-star star"></i> ${imdbRating}</span></h4>
+                                                <p>${Runtime} <span class="movie-types">${Genre}</span>
+                                                <span class="watchlist-text"><button class="btn-watchlist" value="${imdbID}"><i class="fa-solid fa-circle-plus watchlist"></i>Watchlist</button></span>
+                                                </p>
+                                                <p class="movie-desc">${Plot}</p>
+                                            </div>
+                                        </div>
+                                        `
+
+                                        watchListContainerEl.innerHTML += movieHtml
                                 } else {
                                     console.log('Movie is already added!')
                                 }
@@ -55,6 +75,5 @@ searchBtn.addEventListener('click', () => {
                 `
                 filmContainerEl.style.display = 'flex'
             }
-            console.log(movieList)
         })
 })
