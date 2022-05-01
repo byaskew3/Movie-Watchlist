@@ -4,7 +4,7 @@ if (localStorage.length > 0) {
     watchlistContainerEl.style.display = 'block'
     for (let i = 0; i < localStorage.length; i++){
         const movieId = localStorage.getItem(localStorage.key(i));
-        fetch(`http://www.omdbapi.com/?t=${movieId}&apikey=855731ad`)
+        fetch(`https://www.omdbapi.com/?t=${movieId}&apikey=855731ad`)
         .then(res => res.json())
         .then(data => {
             const {Poster, Title, Runtime, Genre, Plot, imdbRating, imdbID} = data

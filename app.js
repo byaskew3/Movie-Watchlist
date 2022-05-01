@@ -9,14 +9,14 @@ let watchList = []
 
 searchBtn.addEventListener('click', () => {
     mainContainerEl.innerHTML = ''
-    fetch(`http://www.omdbapi.com/?s=${inputEl.value}&apikey=855731ad`)
+    fetch(`https://www.omdbapi.com/?s=${inputEl.value}&apikey=855731ad`)
         .then(res => res.json())
         .then(data => {
             inputEl.value = ''
             if (data.Response === 'True') {
                 filmContainerEl.style.display = 'none'
                 for (let movie of data.Search) {
-                    fetch(`http://www.omdbapi.com/?t=${movie.Title}&apikey=855731ad`)
+                    fetch(`https://www.omdbapi.com/?t=${movie.Title}&apikey=855731ad`)
                     .then(res => res.json())
                     .then(data => {
                         const {Poster, Title, Runtime, Genre, Plot, imdbRating, imdbID} = data
@@ -42,7 +42,7 @@ searchBtn.addEventListener('click', () => {
                                 console.log(typeof(btn.value))
                                 if (localStorage.getItem(btn.value) === null) {
                                     console.log(`${btn.value} added to watchlist!`)
-                                    fetch(`http://www.omdbapi.com/?i=${btn.value}&apikey=855731ad`)
+                                    fetch(`https://www.omdbapi.com/?i=${btn.value}&apikey=855731ad`)
                                         .then(res => res.json())
                                         .then(data => {
                                             const {Poster, Title, Runtime, Genre, Plot, imdbRating, imdbID} = data
