@@ -7,7 +7,7 @@ if (localStorage.length > 0) {
         fetch(`https://www.omdbapi.com/?t=${movieId}&apikey=855731ad`)
         .then(res => res.json())
         .then(data => {
-            const {Poster, Title, Runtime, Genre, Plot, imdbRating, imdbID} = data
+            const {Poster, Title, Runtime, Genre, Plot, imdbRating} = data
             const movieHtml = `
                 <div class="movie">
                     <img src="${Poster}" alt="">

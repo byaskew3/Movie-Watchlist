@@ -6,7 +6,6 @@ const filmContainerEl = document.querySelector('.film-container')
 let watchList = []
 
 
-
 searchBtn.addEventListener('click', () => {
     mainContainerEl.innerHTML = ''
     fetch(`https://www.omdbapi.com/?s=${inputEl.value}&apikey=855731ad`)
@@ -41,15 +40,15 @@ searchBtn.addEventListener('click', () => {
                             btn.addEventListener('click', () => {
                                 console.log(typeof(btn.value))
                                 if (localStorage.getItem(btn.value) === null) {
-                                    console.log(`${btn.value} added to watchlist!`)
                                     fetch(`https://www.omdbapi.com/?i=${btn.value}&apikey=855731ad`)
                                         .then(res => res.json())
                                         .then(data => {
-                                            const {Poster, Title, Runtime, Genre, Plot, imdbRating, imdbID} = data
+                                            const {Title, imdbID} = data
+                                            alert(`${Title} added to your watchlist!`)
                                             localStorage.setItem(`${imdbID}`, `${Title}`)
                                         })
                                 } else {
-                                    alert("You've already added this movie to your watchlist!")
+                                    alert(`You've already added this movie to your watchlist!`)
                                 }
                             })
                         })
